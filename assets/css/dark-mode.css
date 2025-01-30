@@ -1,0 +1,26 @@
+body.dark-mode {
+    background-color: #121212;
+    color: #e0e0e0;
+  }
+  
+  header.dark-mode {
+    background: #1f1f1f;
+    color: #e0e0e0;
+  }
+  
+  nav a.dark-mode {
+    color: #e0e0e0;
+  }
+  
+  button.dark-mode {
+    background: #333;
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+  }
+  
+  button.dark-mode:hover {
+    background: #555;
+  }
+  

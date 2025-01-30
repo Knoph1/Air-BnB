@@ -1,7 +1,5 @@
 # Website Portfolio
 
----
-
 > *Hi there, it's* **[Knoph](https://github.com/Knoph1)** *here* 👋
 
 <img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExYndwd2dlYThvczl0ZXc3cjduMzNjZ3lyNnljZnpldDdsM2IwdTdieCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/jBOOXxSJfG8kqMxT11/giphy.gif" height="210">

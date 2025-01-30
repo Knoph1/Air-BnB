@@ -1,16 +1,10 @@
-# Website Portfolio
-
----
-
-> *Developed by:* **Knoph**
-
-> *Dated:* **27th January, 2025** - *Monday*
-
----
-
 > *Hi there, it's* **[Knoph](https://github.com/Knoph1)** *here* 👋
 
 <img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExYndwd2dlYThvczl0ZXc3cjduMzNjZ3lyNnljZnpldDdsM2IwdTdieCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/jBOOXxSJfG8kqMxT11/giphy.gif" height="210">
+
+---
+
+# Website Portfolio
 
 ---
 
@@ -18,7 +12,7 @@
 
 > ### [Knoph](https://github.com/Knoph1)
 
-> *Copyright **(c)** 15th January, 2025* - Wednesday
+> Copyright **(c)** *31st January, 2025* - Friday
 
 [![GitHub Followers](https://img.shields.io/github/followers/Knoph1?style=social)](https://github.com/Knoph1)
 [![GitHub Stars](https://img.shields.io/github/stars/Knoph1?style=social)](https://github.com/Knoph1)

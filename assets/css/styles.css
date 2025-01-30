@@ -45,3 +45,24 @@ body {
     }
   }
   
+  #testimonials {
+    background: #f9f9f9;
+    padding: 2rem;
+    text-align: center;
+  }
+  
+  .testimonial {
+    margin: 1rem 0;
+    font-style: italic;
+  }
+  
+  .social-media a {
+    margin: 0 0.5rem;
+    color: #003366;
+    text-decoration: none;
+  }
+  
+  .social-media a:hover {
+    color: #0066cc;
+  }
+  

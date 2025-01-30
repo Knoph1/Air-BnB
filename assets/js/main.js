@@ -44,3 +44,23 @@ document.querySelectorAll("a[href^='#']").forEach(anchor => {
         });
     });
 });
+
+// Send Contact Form with EmailJS
+document.getElementById("contactForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    emailjs
+        .send("service_id", "template_id", {
+            name: document.getElementById("name").value,
+            email: document.getElementById("email").value,
+            message: document.getElementById("message").value,
+        })
+        .then(
+            () => {
+                document.getElementById("formMessage").textContent = "Message sent successfully!";
+            },
+            () => {
+                document.getElementById("formMessage").textContent = "Failed to send message. Try again.";
+            }
+        );
+});

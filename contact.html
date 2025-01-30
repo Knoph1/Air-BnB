@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact | Knoph</title>
     <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
 </head>
 
 <body>
@@ -23,7 +24,7 @@
     <main>
         <section id="contact">
             <h1>Contact Me</h1>
-            <form action="mailto:youremail@example.com" method="post">
+            <form id="contactForm">
                 <label for="name">Name:</label>
                 <input type="text" id="name" name="name" required>
                 <label for="email">Email:</label>
@@ -32,6 +33,7 @@
                 <textarea id="message" name="message" rows="5" required></textarea>
                 <button type="submit">Send</button>
             </form>
+            <p id="formMessage"></p>
         </section>
     </main>
     <footer>

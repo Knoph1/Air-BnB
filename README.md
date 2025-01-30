@@ -1,6 +1,6 @@
 # Website Portfolio
 
-> *Hi there, it's* **[Knoph](https://github.com/Knoph1)** *here* 👋
+*Hi there, it's* **[Knoph](https://github.com/Knoph1)** *here* 👋
 
 <img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExYndwd2dlYThvczl0ZXc3cjduMzNjZ3lyNnljZnpldDdsM2IwdTdieCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/jBOOXxSJfG8kqMxT11/giphy.gif" height="210">
 
@@ -18,7 +18,7 @@
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Knoph%20Ayieko-blue?style=flat&logo=linkedin)](https://linkedin.com/in/knoph-ayieko-83464918a)
 [![ORCID](https://img.shields.io/badge/ORCID-0009--0001--3787--513X-green?style=flat&logo=orcid)](https://orcid.org/0009-0001-3787-513X)
 
-> **Thanks for visiting my GitHub profile, feel free to explore and collaborate.**
+**Thanks for visiting my GitHub profile, feel free to explore and collaborate.**
 
 <div align="left">
   <p>

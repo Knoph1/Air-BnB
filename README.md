@@ -10,7 +10,7 @@
 
 > ### [Knoph](https://github.com/Knoph1)
 
-> Copyright **(c)** *31st January, 2025* - Friday
+> © 31st January, 2025 - *Friday*
 
 [![GitHub Followers](https://img.shields.io/github/followers/Knoph1?style=social)](https://github.com/Knoph1)
 [![GitHub Stars](https://img.shields.io/github/stars/Knoph1?style=social)](https://github.com/Knoph1)

@@ -1,31 +1,218 @@
-# Website Portfolio
+<img src="https://github.com/jarehec/AirBnB_clone_v3/blob/master/dev/BTCP-btcpbnb-Final.png" width="160" height=auto />
 
-*Hi there, it's* **[Knoph](https://github.com/Knoph1)** *here* 👋
+# AirBnB Clone
 
-<img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExYndwd2dlYThvczl0ZXc3cjduMzNjZ3lyNnljZnpldDdsM2IwdTdieCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/jBOOXxSJfG8kqMxT11/giphy.gif" height="210">
+: Places Search with JSON Web Tokens Login.
+
+* [demo and all endpoints](https://www.cecinestpasun.site)
+
+## Description
+
+Project attempts to clone the the AirBnB application and website, including the
+database, storage, RESTful API, Web Framework, and Front End with jQuery &
+JavaScript Rendering.  Currently the application is designed to run with 2
+storage engine models:
+
+* File Storage Engine:
+
+  * `/models/engine/file_storage.py`
+
+* Database Storage Engine:
+
+  * `/models/engine/db_storage.py`
+
+  * To Setup the DataBase for testing and development, there are 2 setup
+  scripts that setup a database with certain privileges: `setup_mysql_test.sql`
+  & `setup_mysql_test.sql` (for more on setup, see below).
+
+  * The Database uses Environmental Variables for tests.  To execute tests with
+  the environmental variables prepend these declarations to the execution
+  command:
+
+```
+$ BTCPBNB_MYSQL_USER=btcpbnb_dev BTCPBNB_MYSQL_PWD=btcpbnb_dev_pwd \
+BTCPBNB_MYSQL_HOST=localhost BTCPBNB_MYSQL_DB=btcpbnb_dev_db BTCPBNB_TYPE_STORAGE=db \
+[COMMAND HERE (example: python3 -m main_app.app)]
+```
+
+## Environment
+
+* __OS:__ Linux Ubuntu 16.04.3 LTS (xenial)
+* __firewall:__ ufw 0.35
+* __SSL Cert:__ Let's Encrypt [certbot 0.19.0](https://www.digitalocean.com/community/tutorials/how-to-secure-nginx-with-let-s-encrypt-on-ubuntu-16-04)
+* __languages:__ Python 3.4.3, Javascript, HTML, CSS
+* __web server:__ nginx/1.4.6
+* __application server:__ Flask==0.12.2, Jinja2==2.9.6
+* __web server gateway:__ gunicorn (version 19.7.1)
+* __database:__ mysql Ver 14.14 Distrib 5.7.18
+* __JSON Web Token:__ PyJWT==1.4.2
+* __documentation:__ Swagger (flasgger==0.6.6)
+* __style:__
+  * __python:__ PEP 8 (v. 1.7.0)
+  * __web static:__ [W3C Validator](https://validator.w3.org/)
+  * __bash:__ ShellCheck 0.3.3
+  * __JavaScript:__ semistandard 11.0.0
+
+<img src="https://github.com/jarehec/AirBnB_clone_v3/blob/master/dev/btcpbnb_step5.png" />
+
+## Configuration Files
+
+The `/config/` directory contains configuration files for `nginx` and the
+Upstart scripts.  The nginx configuration file is for the configuration file in
+the path: `/etc/nginx/sites-available/default`.  The enabled site is a sym link
+to that configuration file.  The upstart script should be saved in the path:
+`/etc/init/[FILE_NAME.conf]`.  To begin this service, execute:
+
+```
+$ sudo start airbnb.conf
+```
+This script's main task is to execute the following `gunicorn` command:
+
+```
+$ gunicorn --bind 127.0.0.1:8001 wsgi.wsgi_airbnb:app.app
+```
+
+The `gunicorn` command starts an instance of a Flask Application.
 
 ---
 
-![Web App Developer](https://img.shields.io/badge/Developed%20By%20%3A-Knoph%20Ayieko)
+### Web Server Gateway Interface (WSGI)
 
-> ### [Knoph](https://github.com/Knoph1)
+All integration with gunicorn occurs with `Upstart` `.conf` files.  The python
+code for the WSGI is listed in the `/wsgi/` directory.  These python files run
+the designated Flask Application.
 
-> © 31st January, 2025 - *Friday*
+## Setup
 
-[![GitHub Followers](https://img.shields.io/github/followers/Knoph1?style=social)](https://github.com/Knoph1)
-[![GitHub Stars](https://img.shields.io/github/stars/Knoph1?style=social)](https://github.com/Knoph1)
-[![Website](https://img.shields.io/badge/Website-Knoph1-blue?style=flat&logo=web)](https://github.com/Knoph1)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Knoph%20Ayieko-blue?style=flat&logo=linkedin)](https://linkedin.com/in/knoph-ayieko-83464918a)
-[![ORCID](https://img.shields.io/badge/ORCID-0009--0001--3787--513X-green?style=flat&logo=orcid)](https://orcid.org/0009-0001-3787-513X)
+This project comes with various setup scripts to support automation, especially
+during maintanence or to scale the entire project.  The following files are the
+setupfiles along with a brief explanation:
 
-**Thanks for visiting my GitHub profile, feel free to explore and collaborate.**
+* **`dev/setup.sql`:** Drops test and dev databases, and then reinitializes
+the database.
 
-<div align="left">
-  <p>
-    <a href="https://github.com/Knoph1">
-      <img src='https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/github.svg' alt='github' height='40'>
-    </a>
-  </p>
-</div>
+  * Usage: `$ cat dev/bd/drop_recreate_dev_test_db.sql | mysql -uroot -p`
+
+* **`3-deploy_web_static.py`:** uses 2 functions from (1-pack_web_static.py &
+  2-do_deploy_web_static.py) that use the fabric3 python integration, to create
+  a `.tgz` file on local host of all the local web static fils, and then calls
+  the other function to deploy the compressed web static files.  Command must
+  be executed from the `AirBnB_clone` root directory.
+
+  * Usage: `$ fab -f 3-deploy_web_static.py deploy -i ~/.ssh/bootcamp -u ubuntu`
+
+## Testing
+
+### `unittest`
+
+This project uses python library, `unittest` to run tests on all python files.
+All unittests are in the `./tests` directory with the command:
+
+* File Storage Engine Model:
+
+  * `$ python3 -m unittest discover -v ./tests/`
+
+* DataBase Storage Engine Model
+
+```
+$ BTCPBNB_MYSQL_USER=btcpbnb_test BTCPBNB_MYSQL_PWD=btcpbnb_test_pwd \
+BTCPBNB_MYSQL_HOST=localhost BTCPBNB_MYSQL_DB=btcpbnb_test_db BTCPBNB_TYPE_STORAGE=db \
+python3 -m unittest discover -v ./tests/
+```
 
 ---
+
+### All Tests
+
+The bash script `init_test.sh` executes all these tests for both File Storage &
+DataBase Engine Models:
+
+  * checks `pep8` style
+
+  * runs all unittests
+
+  * runs all w3c_validator tests
+
+  * cleans up all `__pycache__` directories and the storage file, `file.json`
+
+  * **Usage `init_test.sh`:**
+
+```
+$ ./dev/init_test.sh
+```
+
+---
+
+### CLI Interactive Tests
+
+* This project uses python library, `cmd` to run tests in an interactive command
+  line interface.  To begin tests with the CLI, run this script:
+
+#### File Storage Engine Model
+
+```
+$ ./console.py
+```
+
+#### To execute the CLI using the Database Storage Engine Model:
+
+```
+$ BTCPBNB_MYSQL_USER=btcpbnb_test BTCPBNB_MYSQL_PWD=btcpbnb_test_pwd \
+BTCPBNB_MYSQL_HOST=localhost BTCPBNB_MYSQL_DB=btcpbnb_test_db BTCPBNB_TYPE_STORAGE=db \
+./console.py
+```
+
+#### For a detailed description of all tests, run these commands in the CLI:
+
+```
+(btcpbnb) help help
+List available commands with "help" or detailed help with "help cmd".
+(btcpbnb) help
+
+Documented commands (type help <topic>):
+========================================
+Amenity    City  Place   State  airbnb  create   help  show
+BaseModel  EOF   Review  User   all     destroy  quit  update
+
+(btcpbnb) help User
+class method with .function() syntax
+        Usage: User.<command>(<id>)
+(btcpbnb) help create
+create: create [ARG] [PARAM 1] [PARAM 2] ...
+        ARG = Class Name
+        PARAM = <key name>=<value>
+                value syntax: "<value>"
+        SYNOPSIS: Creates a new instance of the Class from given input ARG
+                  and PARAMS. Key in PARAM = an instance attribute.
+        EXAMPLE: create City name="Chicago"
+                 City.create(name="Chicago")
+```
+
+* Tests in the CLI may also be executed with this syntax:
+
+  * **destroy:** `<class name>.destroy(<id>)`
+
+  * **update:** `<class name>.update(<id>, <attribute name>, <attribute value>)`
+
+  * **update with dictionary:** `<class name>.update(<id>,
+    <dictionary representation>)`
+
+---
+
+### Continuous Integration Tests
+
+Uses [Travis-CI](https://travis-ci.org/) to run all tests on all commits to the
+github repo
+
+## Authors
+
+* MJ Johnson, [@mj31508](https://github.com/mj31508)
+* David John Coleman II, [davidjohncoleman.com](http://www.davidjohncoleman.com/) | [@djohncoleman](https://twitter.com/djohncoleman)
+* Kimberly Wong, [kjowong](https://github.com/kjowong) | [@kjowong](https://twitter.com/kjowong) | [kjowong@gmail.com](kjowong@gmail.com)
+* Carrie Ybay, [hicarrie](https://github.com/hicarrie) | [@hicarrie_](https://twitter.com/hicarrie_)
+* Jared Heck, [jarehec](https://github.com/jarehec) | [@jarehec](https://twitter.com/jarehec)
+* Hunter Casbeer [spacexengineer](https://github.com/spacexengineer) | [@spacex3ngineer](https://twitter.com/spacex3ngineer)
+
+## License
+
+MIT License
